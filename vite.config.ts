@@ -5,7 +5,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   // To mówi stronie: "nie szukaj plików w głównym folderze, tylko w /skryptyUMP.github.io/"
-  base: '/skryptyUMP.github.io/', 
+  base: '/', 
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
