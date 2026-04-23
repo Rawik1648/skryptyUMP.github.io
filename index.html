@@ -1,13 +1,789 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="pl">
 
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>medskrypty.pl - The Academic Sanctuary</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "outline": "#89726d",
+                        "inverse-surface": "#30312c",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#072104",
+                        "on-surface": "#1b1c17",
+                        "tertiary-container": "#29c1a5",
+                        "surface-container-highest": "#e4e3db",
+                        "primary": "#9e412e",
+                        "primary-fixed": "#ffdad3",
+                        "surface-bright": "#fbf9f1",
+                        "tertiary": "#006b5a",
+                        "secondary-fixed": "#cbecbc",
+                        "inverse-on-surface": "#f3f1e9",
+                        "on-secondary-container": "#506c46",
+                        "inverse-primary": "#ffb4a4",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#fbf9f1",
+                        "surface-variant": "#e4e3db",
+                        "on-background": "#1b1c17",
+                        "on-tertiary-fixed-variant": "#005143",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#dcc0bb",
+                        "surface-container-high": "#eae8e0",
+                        "surface-container-low": "#f5f4ec",
+                        "secondary-fixed-dim": "#b0d0a2",
+                        "surface-dim": "#dcdad2",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#ffb4a4",
+                        "surface-container": "#f0eee6",
+                        "primary-container": "#ff8c73",
+                        "on-primary-fixed": "#3e0500",
+                        "tertiary-fixed-dim": "#50dcbf",
+                        "on-tertiary-container": "#00493d",
+                        "on-secondary-fixed-variant": "#334d2a",
+                        "secondary-container": "#cbecbc",
+                        "background": "#fbf9f1",
+                        "on-surface-variant": "#56423e",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#71f9da",
+                        "on-primary-container": "#762413",
+                        "secondary": "#4a6640",
+                        "on-primary-fixed-variant": "#7e2b19",
+                        "on-tertiary-fixed": "#00201a",
+                        "surface-tint": "#9e412e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fbf9f1;
+            color: #1b1c17;
+            scroll-behavior: smooth;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .glass-nav {
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+
+        .ambient-shadow {
+            box-shadow: 0 12px 60px rgba(27, 28, 23, 0.06);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #9e412e 0%, #ff8c73 100%);
+        }
+
+        .secondary-gradient {
+            background: linear-gradient(135deg, #cbecbc 0%, #b0d0a2 100%);
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body class="bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+    <!-- Sticky Alert Bar -->
+    <div class="sticky top-0 z-[60] w-full bg-primary-container text-on-primary-container py-2 text-center text-sm font-bold tracking-widest uppercase"
+        style="">Testowa wersja platformy – zbieram pierwszy feedback. Cena pakietu może wzrosnąć za 
+        14 dni]</div>
+    <!-- TopAppBar -->
+    <header class="fixed top-9 w-full z-50 transition-all duration-300">
+        <nav
+            class="flex justify-between items-center w-full px-8 py-4 max-w-7xl mx-auto bg-[#fbf9f1]/80 dark:bg-stone-900/80 backdrop-blur-xl rounded-full mt-4">
+            <div class="flex items-center gap-3">
+                <div class="flex items-center justify-center w-10 h-10 bg-primary text-white rounded-full">
+                    <span class="material-symbols-outlined text-2xl" data-icon="neurology" style="">neurology</span>
+                </div>
+                <span class="text-2xl font-black text-[#9e412e] dark:text-[#ff8c73] tracking-tighter"
+                    style="">medskrypty.pl</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 font-manrope tracking-tight font-bold">
+                <a class="text-stone-600 dark:text-stone-400 font-medium hover:text-[#9e412e] hover:opacity-80 transition-all duration-300"
+                    href="#sklep" style="">Sklep</a>
+                <a class="text-stone-600 dark:text-stone-400 font-medium hover:text-[#9e412e] hover:opacity-80 transition-all duration-300"
+                    href="#o-mnie" style="">O mnie</a>
+                <a class="text-stone-600 dark:text-stone-400 font-medium hover:text-[#9e412e] hover:opacity-80 transition-all duration-300"
+                    href="#workflow" style="">Workflow</a>
+                <a class="text-stone-600 dark:text-stone-400 font-medium hover:text-[#9e412e] hover:opacity-80 transition-all duration-300"
+                    href="#faq" style="">FAQ</a>
+            </div>
+            <div class="md:hidden">
+                <span class="material-symbols-outlined text-primary cursor-pointer" data-icon="menu"
+                    style="">menu</span>
+            </div>
+        </nav>
+    </header>
+    <main class="pt-32">
+        <!-- Hero Section -->
+        <section class="max-w-7xl mx-auto px-8 py-20 md:py-32 flex flex-col md:flex-row items-center gap-16">
+            <div class="flex-1 space-y-8 text-center md:text-left">
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface leading-[1.1]" style="">
+                    Zhakuj system nauki na medycynie.</h1>
+                <p class="text-lg md:text-xl text-on-surface-variant max-w-2xl font-body leading-relaxed" style="">
+                    Skondensowane skrypty AI + Fiszki Anki stworzone przez studenta dla studentów. Zero akademickiego
+                    lania wody, same egzaminacyjne konkrety i „pewniaki” z giełdy.</p>
+                <div class="pt-4">
+                    <button
+                        class="hero-gradient px-12 py-5 rounded-xl text-on-primary font-bold text-lg hover:scale-95 transition-transform duration-300 ambient-shadow"
+                        style="">Chcę uczyć się mądrzej</button>
+                </div>
+            </div>
+            <div class="flex-1 w-full flex justify-center">
+                <div
+                    class="relative w-full aspect-square max-w-lg rounded-xl bg-surface-container-low overflow-hidden flex items-center justify-center p-8">
+                    <img alt="Medical student studying lo-fi illustration"
+                        class="w-full h-full object-contain rounded-lg mix-blend-multiply opacity-90"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkmt6JZd8bZK4sifrGlDQZ4OJJHFh32Aoa6asIFV8s60FhGL-_PJr9szIUkdAwjmTzKLLmY0Y7wi87OMrfK0qX_tpjnTjDtoXbNwLfuRT0s9w4CPqDzEHZ_z13BV5ENQQNYHJIx2JwNr0CY1VI_gjqtp58xjPGeqMICWbR-6sAw0ETt3ozohWUzDpalWa0xJzOnEMDnuw-VBdkUqUuPyMVR1G8RtuEnAv60zxtN2llBPOgA1xr5id74VylJzkF6M2aibAd6E1X24wc"
+                        style="">
+                </div>
+            </div>
+        </section>
+        <!-- About Me Section -->
+        <section class="bg-surface-container-low py-24 rounded-t-[3rem]" id="o-mnie">
+            <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row items-center gap-16">
+                <div
+                    class="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden ambient-shadow flex-shrink-0 border-4 border-surface">
+                    <img alt="Author Portrait" class="w-full h-full object-cover"
+                        src="https://i.postimg.cc/8PK2xG53/6349a23e-9d48-45e8-a449-f6f30395f77d.jpg" style="">
+                </div>
+                <div class="flex-1 space-y-6">
+                    <h2 class="text-primary font-bold uppercase tracking-[0.2em] text-sm" style="">Wiktor B. - student V
+                        roku kierunku lekarskiego</h2>
+                    <div class="font-medium text-on-surface leading-snug text-lg" style="">Cześć, jestem Wiktor. Jako
+                        student V roku z ADHD, przez większość studiów uczyłem się chaotycznie. Frustrowało mnie, ile
+                        czasu traciłem na przeszukiwanie 1000-stronicowych podręczników i dziesiątek niejasnych
+                        prezentacji, zamiast po prostu się uczyć. Próbowałem wszystkiego – Pomodoro, fiszek,
+                        mnemotechnik – ale wciąż nie wiedziałem, co dokładnie muszę umieć. Uczyłem się nieistotnych
+                        rzeczy, tracąc energię i wypalając się.<br><br>Jako że AI to moja pasja, to postanowiłem za jej
+                        pomocą rozgryźć ten problem. Stworzyłem dla siebie system w którym karmię najbardziej zaawowane
+                        modele AI sprawdzonymi źródłami z każdego przedmiotu: wieloma podręcznikami, sylabusami,
+                        prezentacjami i potężnymi bazami (giełdami) pytań studenckich. AI odrzuca cały akademicki szum,
+                        syntezuje całą wiedzę, wpakowuje mnemotechniki, akronimy, ciekawostki i porównania. Tak powstają
+                        skrypty, które posiadają lepszą wiedzę niż nie jednen podręcznik a czyta się je jak komiks.
+                        Dzięki temu od roku nie otworzyłem żadnego podręcznika ani prezentacji. Egzaminy zdaję na min.
+                        80%, a na zajęcia kliniczne idę z uśmiechem, bo po prostu wiem co jest 5. Zawsze też chciałem
+                        zbudować pasywne źródło dochodu dlatego stworzyłem tą stronę.</div>
+                </div>
+            </div>
+        </section>
+        <!-- Workflow Section -->
+        <section class="py-32 max-w-7xl mx-auto px-8" id="workflow">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="flex flex-col items-center text-center space-y-6 group">
+                    <div
+                        class="w-20 h-20 rounded-2xl bg-surface-container-high flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                        <span class="material-symbols-outlined text-4xl" data-icon="description"
+                            style="">description</span>
+                    </div>
+                    <div class="text-xl font-bold font-headline" style="">Przeczytaj Skrypt (Pełne Skupienie). Zapomnij
+                        o ścianach tekstu. Skrypt (ok. 30 stron) zawiera 100% najważniejszej wiedzy, wyselekcjonowanej z
+                        podręczników, prezentacji i baz pytań. Jest naszpikowany mnemotechnikami, akronimami i tipami,
+                        które automatycznie zatrzymują Twoją uwagę.</div>
+                </div>
+                <div class="flex flex-col items-center text-center space-y-6 group">
+                    <div
+                        class="w-20 h-20 rounded-2xl bg-surface-container-high flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                        <span class="material-symbols-outlined text-4xl" data-icon="forum" style="">forum</span>
+                    </div>
+                    <div class="text-xl font-bold font-headline" style="">Analizuj z AI (Zrozumienie). Czytasz skrypt, a
+                        na podzielonym ekranie odpalasz chat AI. Czegoś nie rozumiesz? Chcesz zgłębić temat? Pytasz. To
+                        aktywna praca z tekstem, która buduje Twoją ciekawość i zaangażowanie. Wystarczy, że przeczytasz
+                        skrypt w ten sposób tylko raz (zajmie Ci to 2-3h).</div>
+                </div>
+                <div class="flex flex-col items-center text-center space-y-6 group">
+                    <div
+                        class="w-20 h-20 rounded-2xl bg-surface-container-high flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                        <span class="material-symbols-outlined text-4xl" data-icon="psychology"
+                            style="">psychology</span>
+                    </div>
+                    <div class="text-xl font-bold font-headline" style="">Fiszki Anki (Zapamiętaj na zawsze). Po
+                        przeczytaniu odpalasz moją talię fiszek Anki, wygenerowaną w 100% na podstawie skryptu. Ok. 200
+                        fiszek na przedmiot. Dzięki Active Recall i Spaced Repetition zapamiętujesz wszystko
+                        perfekcyjnie (potrzebujesz na to ok. 1-2h dziennie robiąc 30 nowych fiszek). Przed egzaminem
+                        przerabiasz tylko baze. Policz, ile czasu właśnie zaoszczędziłeś.</div>
+                </div>
+            </div>
+        </section>
+        <!-- Library Grid Section -->
+        <section class="py-32 bg-surface-container-lowest" id="sklep">
+            <div class="max-w-7xl mx-auto px-8">
+                <h2 class="text-4xl font-extrabold tracking-tight mb-16 text-center" style="">Biblioteka Skryptów</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <div
+                        class="group cursor-pointer bg-surface-container-low rounded-2xl p-6 hover:ambient-shadow transition-all duration-500 border border-transparent hover:border-outline-variant/20 flex flex-col">
+                        <div class="aspect-[3/4] rounded-xl overflow-hidden mb-6 bg-surface-dim relative">
+                            <img alt="Script Cover"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                src="https://i.postimg.cc/qBFFWJBL/Gemini-Generated-Image-ee85fjee85fjee85.png"
+                                style="">
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3" style="">Ginekologia i Położnictwo</h3>
+                        <p class="text-on-surface-variant mb-6 line-clamp-2 text-sm" style="">Skrypt z wieloma
+                            atrakcyjnymi infografikami</p>
+                        <div class="mt-auto flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl" style="">od 19 zł</span>
+                            <button
+                                class="bg-primary text-on-primary px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2"
+                                style="">Sprawdź <span class="material-symbols-outlined text-sm"
+                                    style="">arrow_forward</span></button>
+                        </div>
+                        <div class="hidden group-hover:block mt-8 pt-6 border-t border-outline-variant/30 space-y-4">
+                            <div class="space-y-3">
+                                <a href="https://cart.easy.tools/checkout/medskrypty/ginekologia-i-poloznictwo"
+                                    class="p-4 rounded-xl bg-surface-bright flex justify-between items-center hover:bg-secondary-container transition-colors cursor-pointer">
+                                    <div class="flex flex-col"><span class="font-bold">Tylko Skrypt PDF</span><span
+                                            class="text-xs text-on-surface-variant">Skrypt jako solidna podstawa</span>
+                                    </div>
+                                    <span class="font-bold text-lg">29 zł</span>
+                                </a>
+                                <a href="https://cart.easy.tools/checkout/medskrypty/ginekologia-i-poloznictwo"
+                                    class="p-4 rounded-xl bg-surface-bright flex justify-between items-center hover:bg-secondary-container transition-colors cursor-pointer">
+                                    <div class="flex flex-col"><span class="font-bold">Tylko Fiszki Anki</span><span
+                                            class="text-xs text-on-surface-variant">Fiszki dzięki którym utrwalisz
+                                            wiedzę</span></div>
+                                    <span class="font-bold text-lg">19 zł</span>
+                                </a>
+                                <div
+                                    class="p-4 rounded-xl bg-surface-bright flex justify-between items-center border-2 border-primary bg-primary-container/10 relative overflow-hidden cursor-pointer">
+                                    <div
+                                        class="absolute top-0 right-0 bg-primary text-on-primary text-[10px] px-3 py-1 font-bold rounded-bl-xl uppercase tracking-widest">
+                                        Najlepszy wybór</div>
+                                    <div class="flex flex-col"><span class="font-bold text-primary">Pakiet: Skrypt +
+                                            Fiszki</span><span class="text-xs text-on-primary-container/70">Wszystko
+                                            czego potrzebujesz</span></div>
+                                    <span class="font-bold text-lg text-primary">39 zł</span>
+                                </div>
+                            </div>
+                            <div id="cart-root"></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group cursor-pointer bg-surface-container-low rounded-2xl p-6 hover:ambient-shadow transition-all duration-500 border border-transparent hover:border-outline-variant/20 flex flex-col">
+                        <div class="aspect-[3/4] rounded-xl overflow-hidden mb-6 bg-surface-dim relative">
+                            <img alt="Script Cover"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                src="https://i.postimg.cc/cCqTFH0x/Gemini-Generated-Image-as7v3las7v3las7v.png"
+                                style="">
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3" style="">Psychiatria</h3>
+                        <p class="text-on-surface-variant mb-6 line-clamp-2 text-sm" style="">Czyta się jak książkę
+                            przygodową</p>
+                        <div class="mt-auto flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl" style="">od 19 zł</span>
+                            <button
+                                class="bg-primary text-on-primary px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2"
+                                style="">Sprawdź <span class="material-symbols-outlined text-sm"
+                                    style="">arrow_forward</span></button>
+                        </div>
+                        <div class="hidden group-hover:block mt-8 pt-6 border-t border-outline-variant/30 space-y-4">
+                            <div class="space-y-3">
+                                <a href="https://cart.easy.tools/checkout/medskrypty/psychiatria"
+                                    class="p-4 rounded-xl bg-surface-bright flex justify-between items-center hover:bg-secondary-container transition-colors cursor-pointer">
+                                    <div class="flex flex-col"><span class="font-bold">Tylko Skrypt PDF</span><span
+                                            class="text-xs text-on-surface-variant">Samo „mięso” w formacie PDF</span>
+                                    </div>
+                                    <span class="font-bold text-lg">29 zł</span>
+                                </a>
+                                <a href="https://cart.easy.tools/checkout/medskrypty/psychiatria"
+                                    class="p-4 rounded-xl bg-surface-bright flex justify-between items-center hover:bg-secondary-container transition-colors cursor-pointer">
+                                    <div class="flex flex-col"><span class="font-bold">Tylko Fiszki Anki</span><span
+                                            class="text-xs text-on-surface-variant">Pytania i odpowiedzi do Anki</span>
+                                    </div>
+                                    <span class="font-bold text-lg">19 zł</span>
+                                </a>
+                                <div
+                                    class="p-4 rounded-xl bg-surface-bright flex justify-between items-center border-2 border-primary bg-primary-container/10 relative overflow-hidden cursor-pointer">
+                                    <div
+                                        class="absolute top-0 right-0 bg-primary text-on-primary text-[10px] px-3 py-1 font-bold rounded-bl-xl uppercase tracking-widest">
+                                        Najlepszy wybór</div>
+                                    <div class="flex flex-col"><span class="font-bold text-primary">Pakiet: Skrypt +
+                                            Fiszki</span><span class="text-xs text-on-primary-container/70">Wszystko
+                                            czego potrzebujesz</span></div>
+                                    <span class="font-bold text-lg text-primary">39 zł</span>
+                                </div>
+                            </div>
+                            <div id="cart-root"></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group cursor-pointer bg-surface-container-low rounded-2xl p-6 hover:ambient-shadow transition-all duration-500 border border-transparent hover:border-outline-variant/20 flex flex-col">
+                        <div class="aspect-[3/4] rounded-xl overflow-hidden mb-6 bg-surface-dim relative">
+                            <img alt="Script Cover"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                src="https://i.postimg.cc/QtccxqGq/Gemini-Generated-Image-lw1li9lw1li9lw1l.png"
+                                style="">
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3" style="">Nefro, Endo, Gastro</h3>
+                        <p class="text-on-surface-variant mb-6 line-clamp-2 text-sm" style="">3w1 - solidna baza</p>
+                        <div class="mt-auto flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl" style="">od 19 zł</span>
+                            <button
+                                class="bg-primary text-on-primary px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2"
+                                style="">Sprawdź <span class="material-symbols-outlined text-sm"
+                                    style="">arrow_forward</span></button>
+                        </div>
+                        <div class="hidden group-hover:block mt-8 pt-6 border-t border-outline-variant/30 space-y-4">
+                            <div class="space-y-3">
+                                <a href="https://cart.easy.tools/checkout/medskrypty/nefro-endo-gastro-2"
+                                    class="p-4 rounded-xl bg-surface-bright flex justify-between items-center hover:bg-secondary-container transition-colors cursor-pointer">
+                                    <div class="flex flex-col"><span class="font-bold">Tylko Skrypt PDF</span><span
+                                            class="text-xs text-on-surface-variant">Samo „mięso” w formacie PDF</span>
+                                    </div>
+                                    <span class="font-bold text-lg">29 zł</span>
+                                </a>
+                                <a href="https://cart.easy.tools/checkout/medskrypty/nefro-endo-gastro-2"
+                                    class="p-4 rounded-xl bg-surface-bright flex justify-between items-center hover:bg-secondary-container transition-colors cursor-pointer">
+                                    <div class="flex flex-col"><span class="font-bold">Tylko Fiszki Anki</span><span
+                                            class="text-xs text-on-surface-variant">Pytania i odpowiedzi do Anki</span>
+                                    </div>
+                                    <span class="font-bold text-lg">19 zł</span>
+                                </a>
+                                <div
+                                    class="p-4 rounded-xl bg-surface-bright flex justify-between items-center border-2 border-primary bg-primary-container/10 relative overflow-hidden cursor-pointer">
+                                    <div
+                                        class="absolute top-0 right-0 bg-primary text-on-primary text-[10px] px-3 py-1 font-bold rounded-bl-xl uppercase tracking-widest">
+                                        Najlepszy wybór</div>
+                                    <div class="flex flex-col"><span class="font-bold text-primary">Pakiet: Skrypt +
+                                            Fiszki</span><span class="text-xs text-on-primary-container/70">Wszystko
+                                            czego potrzebujesz</span></div>
+                                    <span class="font-bold text-lg text-primary">39 zł</span>
+                                </div>
+                            </div>
+                            <div id="cart-root"></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group cursor-pointer bg-surface-container-low rounded-2xl p-6 hover:ambient-shadow transition-all duration-500 border border-transparent hover:border-outline-variant/20 flex flex-col">
+                        <div class="aspect-[3/4] rounded-xl overflow-hidden mb-6 bg-surface-dim relative">
+                            <img alt="Script Cover"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                src="https://i.postimg.cc/J4zH98n6/Gemini-Generated-Image-g9m1klg9m1klg9m1.png"
+                                style="">
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3" style="">Okulistyka</h3>
+                        <p class="text-on-surface-variant mb-6 line-clamp-2 text-sm" style="">Dobrze tłumaczy podstawy i
+                            zawiera dużo mięsa</p>
+                        <div class="mt-auto flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl" style="">od 19 zł</span>
+                            <button
+                                class="bg-primary text-on-primary px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2"
+                                style="">Sprawdź <span class="material-symbols-outlined text-sm"
+                                    style="">arrow_forward</span></button>
+                        </div>
+                        <div class="hidden group-hover:block mt-8 pt-6 border-t border-outline-variant/30 space-y-4">
+                            <div class="space-y-3">
+                                <a href="https://cart.easy.tools/checkout/medskrypty/okulistyka"
+                                    class="p-4 rounded-xl bg-surface-bright flex justify-between items-center hover:bg-secondary-container transition-colors cursor-pointer">
+                                    <div class="flex flex-col"><span class="font-bold">Tylko Skrypt PDF</span><span
+                                            class="text-xs text-on-surface-variant">Samo „mięso” w formacie PDF</span>
+                                    </div>
+                                    <span class="font-bold text-lg">29 zł</span>
+                                </a>
+                                <a href="https://cart.easy.tools/checkout/medskrypty/okulistyka"
+                                    class="p-4 rounded-xl bg-surface-bright flex justify-between items-center hover:bg-secondary-container transition-colors cursor-pointer">
+                                    <div class="flex flex-col"><span class="font-bold">Tylko Fiszki Anki</span><span
+                                            class="text-xs text-on-surface-variant">Pytania i odpowiedzi do Anki</span>
+                                    </div>
+                                    <span class="font-bold text-lg">19 zł</span>
+                                </a>
+                                <div
+                                    class="p-4 rounded-xl bg-surface-bright flex justify-between items-center border-2 border-primary bg-primary-container/10 relative overflow-hidden cursor-pointer">
+                                    <div
+                                        class="absolute top-0 right-0 bg-primary text-on-primary text-[10px] px-3 py-1 font-bold rounded-bl-xl uppercase tracking-widest">
+                                        Najlepszy wybór</div>
+                                    <div class="flex flex-col"><span class="font-bold text-primary">Pakiet: Skrypt +
+                                            Fiszki</span><span class="text-xs text-on-primary-container/70">Wszystko
+                                            czego potrzebujesz</span></div>
+                                    <span class="font-bold text-lg text-primary">39 zł</span>
+                                </div>
+                            </div>
+                            <div id="cart-root"></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group cursor-pointer bg-surface-container-low rounded-2xl p-6 hover:ambient-shadow transition-all duration-500 border border-transparent hover:border-outline-variant/20 flex flex-col">
+                        <div class="aspect-[3/4] rounded-xl overflow-hidden mb-6 bg-surface-dim relative">
+                            <img alt="Script Cover"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                src="https://i.postimg.cc/JhVn4CrR/Gemini-Generated-Image-5cpxtb5cpxtb5cpx.png"
+                                style="">
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3" style="">Medycyna Sądowa&nbsp;</h3>
+                        <p class="text-on-surface-variant mb-6 line-clamp-2 text-sm" style="">Wszystko co najważniejsze
+                            w pigułce&nbsp;</p>
+                        <div class="mt-auto flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl" style="">od 19 zł</span>
+                            <button
+                                class="bg-primary text-on-primary px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2"
+                                style="">Sprawdź <span class="material-symbols-outlined text-sm"
+                                    style="">arrow_forward</span></button>
+                        </div>
+                        <div class="hidden group-hover:block mt-8 pt-6 border-t border-outline-variant/30 space-y-4">
+                            <div class="space-y-3">
+                                <a href="https://cart.easy.tools/checkout/medskrypty/medycyna-sadowa"
+                                    class="p-4 rounded-xl bg-surface-bright flex justify-between items-center hover:bg-secondary-container transition-colors cursor-pointer">
+                                    <div class="flex flex-col"><span class="font-bold">Tylko Skrypt PDF</span><span
+                                            class="text-xs text-on-surface-variant">Samo „mięso” w formacie PDF</span>
+                                    </div>
+                                    <span class="font-bold text-lg">29 zł</span>
+                                </a>
+                                <a href="https://cart.easy.tools/checkout/medskrypty/medycyna-sadowa"
+                                    class="p-4 rounded-xl bg-surface-bright flex justify-between items-center hover:bg-secondary-container transition-colors cursor-pointer">
+                                    <div class="flex flex-col"><span class="font-bold">Tylko Fiszki Anki</span><span
+                                            class="text-xs text-on-surface-variant">Pytania i odpowiedzi do Anki</span>
+                                    </div>
+                                    <span class="font-bold text-lg">19 zł</span>
+                                </a>
+                                <div
+                                    class="p-4 rounded-xl bg-surface-bright flex justify-between items-center border-2 border-primary bg-primary-container/10 relative overflow-hidden cursor-pointer">
+                                    <div
+                                        class="absolute top-0 right-0 bg-primary text-on-primary text-[10px] px-3 py-1 font-bold rounded-bl-xl uppercase tracking-widest">
+                                        Najlepszy wybór</div>
+                                    <div class="flex flex-col"><span class="font-bold text-primary">Pakiet: Skrypt +
+                                            Fiszki</span><span class="text-xs text-on-primary-container/70">Wszystko
+                                            czego potrzebujesz</span></div>
+                                    <span class="font-bold text-lg text-primary">39 zł</span>
+                                </div>
+                            </div>
+                            <div id="cart-root"></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group cursor-pointer bg-surface-container-low rounded-2xl p-6 hover:ambient-shadow transition-all duration-500 border border-transparent hover:border-outline-variant/20 flex flex-col">
+                        <div class="aspect-[3/4] rounded-xl overflow-hidden mb-6 bg-surface-dim relative">
+                            <img alt="Script Cover"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                src="https://i.postimg.cc/GpcWjXz7/Gemini-Generated-Image-4yoxjh4yoxjh4yox.png"
+                                style="">
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3" style="">Anestezjologia</h3>
+                        <p class="text-on-surface-variant mb-6 line-clamp-2 text-sm" style="">Bardzo zaawansowany -
+                            Dobrze wytłumaczone mechanizmy</p>
+                        <div class="mt-auto flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl" style="">od 19 zł</span>
+                            <button
+                                class="bg-primary text-on-primary px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2"
+                                style="">Sprawdź <span class="material-symbols-outlined text-sm"
+                                    style="">arrow_forward</span></button>
+                        </div>
+                        <div class="hidden group-hover:block mt-8 pt-6 border-t border-outline-variant/30 space-y-4">
+                            <div class="space-y-3">
+                                <a href="https://cart.easy.tools/checkout/medskrypty/anestezjologia"
+                                    class="p-4 rounded-xl bg-surface-bright flex justify-between items-center hover:bg-secondary-container transition-colors cursor-pointer">
+                                    <div class="flex flex-col"><span class="font-bold">Tylko Skrypt PDF</span><span
+                                            class="text-xs text-on-surface-variant">Samo „mięso” w formacie PDF</span>
+                                    </div>
+                                    <span class="font-bold text-lg">29 zł</span>
+                                </a>
+                                <a href="https://cart.easy.tools/checkout/medskrypty/anestezjologia"
+                                    class="p-4 rounded-xl bg-surface-bright flex justify-between items-center hover:bg-secondary-container transition-colors cursor-pointer">
+                                    <div class="flex flex-col"><span class="font-bold">Tylko Fiszki Anki</span><span
+                                            class="text-xs text-on-surface-variant">Pytania i odpowiedzi do Anki</span>
+                                    </div>
+                                    <span class="font-bold text-lg">19 zł</span>
+                                </a>
+                                <div
+                                    class="p-4 rounded-xl bg-surface-bright flex justify-between items-center border-2 border-primary bg-primary-container/10 relative overflow-hidden cursor-pointer">
+                                    <div
+                                        class="absolute top-0 right-0 bg-primary text-on-primary text-[10px] px-3 py-1 font-bold rounded-bl-xl uppercase tracking-widest">
+                                        Najlepszy wybór</div>
+                                    <div class="flex flex-col"><span class="font-bold text-primary">Pakiet: Skrypt +
+                                            Fiszki</span><span class="text-xs text-on-primary-container/70">Wszystko
+                                            czego potrzebujesz</span></div>
+                                    <span class="font-bold text-lg text-primary">39 zł</span>
+                                </div>
+                            </div>
+                            <div id="cart-root"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 flex justify-center">
+                    <button id="show-more-scripts-btn"
+                        class="bg-surface-container-high text-on-surface px-8 py-4 rounded-full font-bold hover:bg-surface-container-highest transition-colors ambient-shadow flex items-center gap-2">
+                        Rozwiń pełną bibliotekę
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                </div>
+
+                <!-- Horizontal Slider Extension (Hidden by default) -->
+                <div id="expanded-library" class="hidden mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Placeholder for more scripts. -->
+                </div>
+            </div>
+        </section>
+        <!-- FAQ Section -->
+        <section class="py-32 max-w-4xl mx-auto px-8" id="faq">
+            <h2 class="text-4xl font-extrabold tracking-tight text-center mb-16" style="">Najczęściej zadawane pytania
+            </h2>
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-surface-container-low rounded-lg overflow-hidden border border-outline-variant/10">
+                    <button class="faq-toggle w-full flex justify-between items-center p-8 text-left group">
+                        <span class="text-lg font-bold font-headline group-hover:text-primary transition-colors">1.
+                            Dlaczego to lepsze niż kursy wideo za kilkaset złotych?</span>
+                        <span
+                            class="faq-icon material-symbols-outlined text-primary transition-transform duration-300">expand_more</span>
+                    </button>
+                    <div class="faq-content hidden px-8 pb-8 text-on-surface-variant leading-relaxed text-left">
+                        Nie musisz oglądać 40 godzin przegadanych wykładów. Dostajesz czysty konkret, który przeczytasz
+                        ze zrozumieniem w 3 godziny, a resztę czasu poświęcisz na wbijanie go do głowy za pomocą Active
+                        Recall i fiszek.
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="bg-surface-container-low rounded-lg overflow-hidden border border-outline-variant/10">
+                    <button class="faq-toggle w-full flex justify-between items-center p-8 text-left group">
+                        <span class="text-lg font-bold font-headline group-hover:text-primary transition-colors">2. Czy
+                            materiały na pewno nie zawierają błędów?</span>
+                        <span
+                            class="faq-icon material-symbols-outlined text-primary transition-transform duration-300">expand_more</span>
+                    </button>
+                    <div class="faq-content hidden px-8 pb-8 text-on-surface-variant leading-relaxed text-left">
+                        Skrypt ułożony jest na najnowszych sylabusach, podręcznikach i bazach pytań, które uprzednio
+                        zweryfikowałem. AI bazuje wyłącznie na przesłanych źródłach i odpowiada jedynie za syntezę i
+                        układ (takie rozwiązanie wyklucza halucynowanie przez LLM), a ja osobiście redaguję i weryfikuję
+                        każde zdanie.
+                    </div>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="bg-surface-container-low rounded-lg overflow-hidden border border-outline-variant/10">
+                    <button class="faq-toggle w-full flex justify-between items-center p-8 text-left group">
+                        <span class="text-lg font-bold font-headline group-hover:text-primary transition-colors">3. Co,
+                            jeśli mimo nauki z Twoich materiałów nie zdam egzaminu?</span>
+                        <span
+                            class="faq-icon material-symbols-outlined text-primary transition-transform duration-300">expand_more</span>
+                    </button>
+                    <div class="faq-content hidden px-8 pb-8 text-on-surface-variant leading-relaxed text-left">
+                        Jeśli kupisz pakiet (skrypt + fiszki), a mimo nauki nie uda Ci się zaliczyć egzaminu – prześlij
+                        mi screenshot wyniku na maila: brykczyn@gmail.com. Zwrócę Ci 100% wpłaconej kwoty.
+                    </div>
+                </div>
+                <!-- FAQ Item 4 -->
+                <div class="bg-surface-container-low rounded-lg overflow-hidden border border-outline-variant/10">
+                    <button class="faq-toggle w-full flex justify-between items-center p-8 text-left group">
+                        <span class="text-lg font-bold font-headline group-hover:text-primary transition-colors">4. Czy
+                            mogę edytować plik na swoim urządzeniu?</span>
+                        <span
+                            class="faq-icon material-symbols-outlined text-primary transition-transform duration-300">expand_more</span>
+                    </button>
+                    <div class="faq-content hidden px-8 pb-8 text-on-surface-variant leading-relaxed text-left">
+                        Naturalnie. Plik pobierasz w formacie PDF i możesz go otworzyć w swoich plikach, GoodNotes, czy
+                        gdzie tam chcesz :)
+                    </div>
+                </div>
+                <!-- FAQ Item 5 -->
+                <div class="bg-surface-container-low rounded-lg overflow-hidden border border-outline-variant/10">
+                    <button class="faq-toggle w-full flex justify-between items-center p-8 text-left group">
+                        <span class="text-lg font-bold font-headline group-hover:text-primary transition-colors">5. Jak
+                            zaimportować fiszki do Anki lub Quizlet?</span>
+                        <span
+                            class="faq-icon material-symbols-outlined text-primary transition-transform duration-300">expand_more</span>
+                    </button>
+                    <div
+                        class="faq-content hidden px-8 pb-8 text-on-surface-variant leading-relaxed text-left space-y-6">
+                        <p>Prosto - 2 min roboty. W razie problemów pisz :)</p>
+
+                        <div>
+                            <h3 class="font-bold text-lg text-on-surface mb-2">Importowanie do Anki</h3>
+                            <ol class="list-decimal list-inside space-y-2">
+                                <li>Otwórz program Anki na komputerze.</li>
+                                <li>Kliknij przycisk <strong>Importuj plik</strong> (na dole okna) lub wybierz z menu
+                                    <strong>Plik &gt; Importuj</strong>.
+                                </li>
+                                <li>Wybierz swój plik <code>.tsv</code>.</li>
+                                <li>W oknie importu skonfiguruj następujące opcje:
+                                    <ul class="list-disc list-inside ml-6 mt-2 space-y-1">
+                                        <li><strong>Typ notatki:</strong> Wybierz "Podstawowy" (chyba że masz własny
+                                            model).</li>
+                                        <li><strong>Talia:</strong> Wybierz talię, do której mają trafić fiszki.</li>
+                                        <li><strong>Pola oddzielone przez:</strong> Upewnij się, że zaznaczony jest
+                                            "Tabulator".</li>
+                                    </ul>
+                                </li>
+                                <li>Sprawdź "Mapowanie pól" – pole 1 powinno odpowiadać za "Przód" (Front), a pole 2 za
+                                    "Tył" (Back).</li>
+                                <li>Kliknij przycisk <strong>Importuj</strong>.</li>
+                            </ol>
+                        </div>
+
+                        <div>
+                            <h3 class="font-bold text-lg text-on-surface mb-2">Importowanie do Quizlet</h3>
+                            <ol class="list-decimal list-inside space-y-2">
+                                <li>Zaloguj się na Quizlet.com i kliknij przycisk <strong>Stwórz &gt; Zestaw
+                                        fiszek</strong>.</li>
+                                <li>Zamiast wpisywać wszystko ręcznie, kliknij napis <strong>+ Importuj z Worda, Excela,
+                                        Google Docs itp.</strong> (znajduje się pod polem tytułu zestawu).</li>
+                                <li>Otwórz swój plik <code>.tsv</code> w Notatniku lub Excelu, zaznacz całą zawartość i
+                                    skopiuj ją (Ctrl+C).</li>
+                                <li>Wklej zawartość do okna w Quizlet (Ctrl+V).</li>
+                                <li>W sekcji "Niestandardowe opcje" (pod oknem wklejania):
+                                    <ul class="list-disc list-inside ml-6 mt-2 space-y-1">
+                                        <li>Ustaw separator między terminem a definicją jako <strong>Tabulator</strong>.
+                                        </li>
+                                        <li>Ustaw separator między fiszkami jako <strong>Nowa linia</strong>.</li>
+                                    </ul>
+                                </li>
+                                <li>Kliknij przycisk <strong>Importuj</strong>.</li>
+                                <li>Wybierz języki dla obu kolumn i kliknij <strong>Stwórz</strong>, aby zapisać zestaw.
+                                </li>
+                            </ol>
+                        </div>
+
+                        <div>
+                            <h3 class="font-bold text-lg text-on-surface mb-2">Ważne wskazówki:</h3>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li><strong>Kodowanie:</strong> Zawsze zapisuj pliki w kodowaniu UTF-8. Dzięki temu
+                                    polskie znaki (ą, ę, ś itp.) będą wyświetlać się poprawnie.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="w-full rounded-t-[3rem] mt-20 bg-[#1E293B] text-white">
+        <div class="flex flex-col md:flex-row justify-between items-start px-12 py-20 w-full max-w-7xl mx-auto gap-12">
+            <div class="space-y-6 max-w-sm">
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center justify-center w-8 h-8 bg-primary text-white rounded-full">
+                        <span class="material-symbols-outlined text-xl" style="">neurology</span>
+                    </div>
+                    <div class="text-xl font-black tracking-tighter" style="">medskrypty.pl</div>
+                </div>
+                <p class="text-sm font-inter tracking-wide text-slate-400 italic" style="">
+                    Zhakuj system nauki na medycynie. Skondensowane skrypty AI + Fiszki Anki stworzone przez studenta
+                    dla studentów.
+                </p>
+                <div class="flex flex-col gap-2 text-slate-300 font-medium">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary" data-icon="mail" style="">mail</span>
+                        <span class="text-sm" style="">Masz pytania lub chcesz podzielić się opinią po zakupie? Napisz:
+                            brykczyn@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-12 font-inter text-sm tracking-wide">
+                <div class="space-y-4">
+                    <div class="text-slate-100 font-bold uppercase tracking-widest text-[10px]" style="">Prawne</div>
+                    <ul class="space-y-2">
+                        <li class="" style=""><a class="text-slate-400 hover:text-primary transition-colors" href="#"
+                                style="">Regulamin platformy</a></li>
+                        <li class="" style=""><a class="text-slate-400 hover:text-primary transition-colors" href="#"
+                                style="">Polityka Prywatności</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <div class="text-slate-100 font-bold uppercase tracking-widest text-[10px]" style="">Social (maby in
+                        future)</div>
+                    <ul class="space-y-2">
+                        <li class="" style=""><a class="text-slate-400 hover:text-primary transition-colors" href="#"
+                                style="">Instagram</a></li>
+                        <li class="" style=""><a class="text-slate-400 hover:text-primary transition-colors" href="#"
+                                style="">TikTok</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-12 pb-12">
+            <div class="border-t border-slate-800 pt-8 flex flex-col items-center gap-6">
+                <p class="text-[10px] text-slate-500 font-medium text-center max-w-4xl leading-relaxed" style="">
+                    Zastrzeżenie: Materiały dostępne na platformie medskrypty.pl mają charakter wyłącznie edukacyjny i
+                    pomocniczy. Nie zastępują profesjonalnej porady medycznej, diagnozy ani leczenia. Autor dokłada
+                    wszelkich starań, aby dane były rzetelne, jednak nie ponosi odpowiedzialności za ewentualne błędy
+                    lub skutki decyzji podjętych na podstawie skryptów.
+                </p>
+                <div class="text-[10px] text-slate-600 font-medium" style="">
+                    © 2026 medskrypty.pl</div>
+            </div>
+        </div>
+    </footer>
+    <!-- Floating Progress Orb -->
+    <div class="fixed bottom-8 right-8 z-50">
+        <div
+            class="w-16 h-16 rounded-full glass-nav bg-white/40 ambient-shadow flex items-center justify-center text-primary group cursor-pointer hover:scale-110 transition-transform">
+            <svg class="absolute inset-0 w-full h-full -rotate-90">
+                <circle class="text-secondary-fixed-dim" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor"
+                    stroke-width="4"></circle>
+                <circle class="text-primary" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor"
+                    stroke-dasharray="176" stroke-dashoffset="120" stroke-width="4"></circle>
+            </svg>
+            <span class="material-symbols-outlined text-2xl relative z-10" data-icon="menu_book"
+                style="">menu_book</span>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // FAQ logic
+            const faqToggles = document.querySelectorAll('.faq-toggle');
+            faqToggles.forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    const content = toggle.nextElementSibling;
+                    const icon = toggle.querySelector('.faq-icon');
+
+                    content.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                });
+            });
+
+            // Expand library logic
+            const expandBtn = document.getElementById('show-more-scripts-btn');
+            const expandedLibrary = document.getElementById('expanded-library');
+
+            if (expandBtn && expandedLibrary) {
+                expandBtn.addEventListener('click', () => {
+                    expandedLibrary.classList.remove('hidden');
+                    expandBtn.style.display = 'none';
+                    expandedLibrary.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
