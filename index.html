@@ -121,14 +121,29 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .timer-blink {
+            animation: blink 1s linear infinite;
+        }
+
+        #timer {
+            font-variant-numeric: tabular-nums;
+            display: inline-block;
+            min-width: 165px;
+            text-align: left;
+        }
     </style>
 </head>
 
 <body class="bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
     <!-- Sticky Alert Bar -->
     <div class="sticky top-0 z-[60] w-full bg-primary-container text-on-primary-container py-2 text-center text-sm font-bold tracking-widest uppercase"
-        style="">Testowa wersja platformy – zbieram pierwszy feedback. Cena pakietu może wzrosnąć za 
-        14 dni]</div>
+        style="">Testowa wersja platformy – zbieram pierwszy feedback. Cena pakietu może wzrosnąć za: <span id="timer"></span></div>
     <!-- TopAppBar -->
     <header class="fixed top-9 w-full z-50 transition-all duration-300">
         <nav
@@ -198,14 +213,15 @@
                         prezentacji, zamiast po prostu się uczyć. Próbowałem wszystkiego – Pomodoro, fiszek,
                         mnemotechnik – ale wciąż nie wiedziałem, co dokładnie muszę umieć. Uczyłem się nieistotnych
                         rzeczy, tracąc energię i wypalając się.<br><br>Jako że AI to moja pasja, to postanowiłem za jej
-                        pomocą rozgryźć ten problem. Stworzyłem dla siebie system w którym karmię najbardziej zaawowane
+                        pomocą rozgryźć ten problem. Stworzyłem dla siebie system, w którym karmię najbardziej
+                        zaawansowane
                         modele AI sprawdzonymi źródłami z każdego przedmiotu: wieloma podręcznikami, sylabusami,
                         prezentacjami i potężnymi bazami (giełdami) pytań studenckich. AI odrzuca cały akademicki szum,
                         syntezuje całą wiedzę, wpakowuje mnemotechniki, akronimy, ciekawostki i porównania. Tak powstają
-                        skrypty, które posiadają lepszą wiedzę niż nie jednen podręcznik a czyta się je jak komiks.
+                        skrypty, które posiadają lepszą wiedzę niż niejeden podręcznik, a czyta się je jak komiks.
                         Dzięki temu od roku nie otworzyłem żadnego podręcznika ani prezentacji. Egzaminy zdaję na min.
-                        80%, a na zajęcia kliniczne idę z uśmiechem, bo po prostu wiem co jest 5. Zawsze też chciałem
-                        zbudować pasywne źródło dochodu dlatego stworzyłem tą stronę.</div>
+                        80%, a na zajęcia kliniczne idę z uśmiechem, bo po prostu wiem, co jest 5. Zawsze też chciałem
+                        zbudować pasywne źródło dochodu, dlatego stworzyłem tę stronę.</div>
                 </div>
             </div>
         </section>
@@ -242,8 +258,8 @@
                     <div class="text-xl font-bold font-headline" style="">Fiszki Anki (Zapamiętaj na zawsze). Po
                         przeczytaniu odpalasz moją talię fiszek Anki, wygenerowaną w 100% na podstawie skryptu. Ok. 200
                         fiszek na przedmiot. Dzięki Active Recall i Spaced Repetition zapamiętujesz wszystko
-                        perfekcyjnie (potrzebujesz na to ok. 1-2h dziennie robiąc 30 nowych fiszek). Przed egzaminem
-                        przerabiasz tylko baze. Policz, ile czasu właśnie zaoszczędziłeś.</div>
+                        perfekcyjnie (potrzebujesz na to ok. 1-2h dziennie, robiąc 30 nowych fiszek). Przed egzaminem
+                        przerabiasz tylko bazę. Policz, ile czasu właśnie zaoszczędziłeś.</div>
                 </div>
             </div>
         </section>
@@ -282,20 +298,20 @@
                                 <a href="https://cart.easy.tools/checkout/medskrypty/ginekologia-i-poloznictwo"
                                     class="p-4 rounded-xl bg-surface-bright flex justify-between items-center hover:bg-secondary-container transition-colors cursor-pointer">
                                     <div class="flex flex-col"><span class="font-bold">Tylko Fiszki Anki</span><span
-                                            class="text-xs text-on-surface-variant">Fiszki dzięki którym utrwalisz
+                                            class="text-xs text-on-surface-variant">Fiszki, dzięki którym utrwalisz
                                             wiedzę</span></div>
                                     <span class="font-bold text-lg">19 zł</span>
                                 </a>
-                                <div
+                                <a href="https://cart.easy.tools/checkout/medskrypty/ginekologia-i-poloznictwo?plan=price_1TQ4cZCKZLhYzvKfTCHldR1K"
                                     class="p-4 rounded-xl bg-surface-bright flex justify-between items-center border-2 border-primary bg-primary-container/10 relative overflow-hidden cursor-pointer">
                                     <div
                                         class="absolute top-0 right-0 bg-primary text-on-primary text-[10px] px-3 py-1 font-bold rounded-bl-xl uppercase tracking-widest">
                                         Najlepszy wybór</div>
                                     <div class="flex flex-col"><span class="font-bold text-primary">Pakiet: Skrypt +
-                                            Fiszki</span><span class="text-xs text-on-primary-container/70">Wszystko
+                                            Fiszki</span><span class="text-xs text-on-primary-container/70">Wszystko,
                                             czego potrzebujesz</span></div>
                                     <span class="font-bold text-lg text-primary">39 zł</span>
-                                </div>
+                                </a>
                             </div>
                             <div id="cart-root"></div>
                         </div>
@@ -334,16 +350,16 @@
                                     </div>
                                     <span class="font-bold text-lg">19 zł</span>
                                 </a>
-                                <div
+                                <a href="https://cart.easy.tools/checkout/medskrypty/psychiatria?plan=price_1TPKeACKZLhYzvKf1sIQGbqx"
                                     class="p-4 rounded-xl bg-surface-bright flex justify-between items-center border-2 border-primary bg-primary-container/10 relative overflow-hidden cursor-pointer">
                                     <div
                                         class="absolute top-0 right-0 bg-primary text-on-primary text-[10px] px-3 py-1 font-bold rounded-bl-xl uppercase tracking-widest">
                                         Najlepszy wybór</div>
                                     <div class="flex flex-col"><span class="font-bold text-primary">Pakiet: Skrypt +
-                                            Fiszki</span><span class="text-xs text-on-primary-container/70">Wszystko
+                                            Fiszki</span><span class="text-xs text-on-primary-container/70">Wszystko,
                                             czego potrzebujesz</span></div>
                                     <span class="font-bold text-lg text-primary">39 zł</span>
-                                </div>
+                                </a>
                             </div>
                             <div id="cart-root"></div>
                         </div>
@@ -381,16 +397,16 @@
                                     </div>
                                     <span class="font-bold text-lg">19 zł</span>
                                 </a>
-                                <div
+                                <a href="https://cart.easy.tools/checkout/medskrypty/nefro-endo-gastro-2?plan=price_1TQ4c1CKZLhYzvKf1SUWgmS4"
                                     class="p-4 rounded-xl bg-surface-bright flex justify-between items-center border-2 border-primary bg-primary-container/10 relative overflow-hidden cursor-pointer">
                                     <div
                                         class="absolute top-0 right-0 bg-primary text-on-primary text-[10px] px-3 py-1 font-bold rounded-bl-xl uppercase tracking-widest">
                                         Najlepszy wybór</div>
                                     <div class="flex flex-col"><span class="font-bold text-primary">Pakiet: Skrypt +
-                                            Fiszki</span><span class="text-xs text-on-primary-container/70">Wszystko
+                                            Fiszki</span><span class="text-xs text-on-primary-container/70">Wszystko,
                                             czego potrzebujesz</span></div>
                                     <span class="font-bold text-lg text-primary">39 zł</span>
-                                </div>
+                                </a>
                             </div>
                             <div id="cart-root"></div>
                         </div>
@@ -429,16 +445,16 @@
                                     </div>
                                     <span class="font-bold text-lg">19 zł</span>
                                 </a>
-                                <div
+                                <a href="https://cart.easy.tools/checkout/medskrypty/okulistyka?plan=price_1TQ4bvCKZLhYzvKfsfojZ41d"
                                     class="p-4 rounded-xl bg-surface-bright flex justify-between items-center border-2 border-primary bg-primary-container/10 relative overflow-hidden cursor-pointer">
                                     <div
                                         class="absolute top-0 right-0 bg-primary text-on-primary text-[10px] px-3 py-1 font-bold rounded-bl-xl uppercase tracking-widest">
                                         Najlepszy wybór</div>
                                     <div class="flex flex-col"><span class="font-bold text-primary">Pakiet: Skrypt +
-                                            Fiszki</span><span class="text-xs text-on-primary-container/70">Wszystko
+                                            Fiszki</span><span class="text-xs text-on-primary-container/70">Wszystko,
                                             czego potrzebujesz</span></div>
                                     <span class="font-bold text-lg text-primary">39 zł</span>
-                                </div>
+                                </a>
                             </div>
                             <div id="cart-root"></div>
                         </div>
@@ -451,9 +467,9 @@
                                 src="https://i.postimg.cc/JhVn4CrR/Gemini-Generated-Image-5cpxtb5cpxtb5cpx.png"
                                 style="">
                         </div>
-                        <h3 class="text-2xl font-bold mb-3" style="">Medycyna Sądowa&nbsp;</h3>
-                        <p class="text-on-surface-variant mb-6 line-clamp-2 text-sm" style="">Wszystko co najważniejsze
-                            w pigułce&nbsp;</p>
+                        <h3 class="text-2xl font-bold mb-3" style="">Medycyna Sądowa</h3>
+                        <p class="text-on-surface-variant mb-6 line-clamp-2 text-sm" style="">Wszystko, co najważniejsze
+                            w pigułce</p>
                         <div class="mt-auto flex justify-between items-center">
                             <span class="text-primary font-bold text-xl" style="">od 19 zł</span>
                             <button
@@ -477,16 +493,16 @@
                                     </div>
                                     <span class="font-bold text-lg">19 zł</span>
                                 </a>
-                                <div
+                                <a href="https://cart.easy.tools/checkout/medskrypty/medycyna-sadowa?plan=price_1TQ4bpCKZLhYzvKfQ7wov7Lj"
                                     class="p-4 rounded-xl bg-surface-bright flex justify-between items-center border-2 border-primary bg-primary-container/10 relative overflow-hidden cursor-pointer">
                                     <div
                                         class="absolute top-0 right-0 bg-primary text-on-primary text-[10px] px-3 py-1 font-bold rounded-bl-xl uppercase tracking-widest">
                                         Najlepszy wybór</div>
                                     <div class="flex flex-col"><span class="font-bold text-primary">Pakiet: Skrypt +
-                                            Fiszki</span><span class="text-xs text-on-primary-container/70">Wszystko
+                                            Fiszki</span><span class="text-xs text-on-primary-container/70">Wszystko,
                                             czego potrzebujesz</span></div>
                                     <span class="font-bold text-lg text-primary">39 zł</span>
-                                </div>
+                                </a>
                             </div>
                             <div id="cart-root"></div>
                         </div>
@@ -500,8 +516,8 @@
                                 style="">
                         </div>
                         <h3 class="text-2xl font-bold mb-3" style="">Anestezjologia</h3>
-                        <p class="text-on-surface-variant mb-6 line-clamp-2 text-sm" style="">Bardzo zaawansowany -
-                            Dobrze wytłumaczone mechanizmy</p>
+                        <p class="text-on-surface-variant mb-6 line-clamp-2 text-sm" style="">Bardzo zaawansowany –
+                            dobrze wytłumaczone mechanizmy</p>
                         <div class="mt-auto flex justify-between items-center">
                             <span class="text-primary font-bold text-xl" style="">od 19 zł</span>
                             <button
@@ -525,16 +541,16 @@
                                     </div>
                                     <span class="font-bold text-lg">19 zł</span>
                                 </a>
-                                <div
+                                <a href="https://cart.easy.tools/checkout/medskrypty/anestezjologia?plan=price_1TQ4bYCKZLhYzvKfwasDD8HN"
                                     class="p-4 rounded-xl bg-surface-bright flex justify-between items-center border-2 border-primary bg-primary-container/10 relative overflow-hidden cursor-pointer">
                                     <div
                                         class="absolute top-0 right-0 bg-primary text-on-primary text-[10px] px-3 py-1 font-bold rounded-bl-xl uppercase tracking-widest">
                                         Najlepszy wybór</div>
                                     <div class="flex flex-col"><span class="font-bold text-primary">Pakiet: Skrypt +
-                                            Fiszki</span><span class="text-xs text-on-primary-container/70">Wszystko
+                                            Fiszki</span><span class="text-xs text-on-primary-container/70">Wszystko,
                                             czego potrzebujesz</span></div>
                                     <span class="font-bold text-lg text-primary">39 zł</span>
-                                </div>
+                                </a>
                             </div>
                             <div id="cart-root"></div>
                         </div>
@@ -599,7 +615,7 @@
                     </button>
                     <div class="faq-content hidden px-8 pb-8 text-on-surface-variant leading-relaxed text-left">
                         Jeśli kupisz pakiet (skrypt + fiszki), a mimo nauki nie uda Ci się zaliczyć egzaminu – prześlij
-                        mi screenshot wyniku na maila: brykczyn@gmail.com. Zwrócę Ci 100% wpłaconej kwoty.
+                        mi screenshot wyniku na maila: medskryptypl@gmail.com. Zwrócę Ci 100% wpłaconej kwoty.
                     </div>
                 </div>
                 <!-- FAQ Item 4 -->
@@ -611,7 +627,7 @@
                             class="faq-icon material-symbols-outlined text-primary transition-transform duration-300">expand_more</span>
                     </button>
                     <div class="faq-content hidden px-8 pb-8 text-on-surface-variant leading-relaxed text-left">
-                        Naturalnie. Plik pobierasz w formacie PDF i możesz go otworzyć w swoich plikach, GoodNotes, czy
+                        Naturalnie. Plik pobierasz w formacie PDF i możesz go otworzyć w swoich plikach, GoodNotes czy
                         gdzie tam chcesz :)
                     </div>
                 </div>
@@ -703,7 +719,7 @@
                     <div class="flex items-center gap-2">
                         <span class="material-symbols-outlined text-primary" data-icon="mail" style="">mail</span>
                         <span class="text-sm" style="">Masz pytania lub chcesz podzielić się opinią po zakupie? Napisz:
-                            brykczyn@gmail.com</span>
+                            medskryptypl@gmail.com</span>
                     </div>
                 </div>
             </div>
@@ -711,15 +727,18 @@
                 <div class="space-y-4">
                     <div class="text-slate-100 font-bold uppercase tracking-widest text-[10px]" style="">Prawne</div>
                     <ul class="space-y-2">
-                        <li class="" style=""><a class="text-slate-400 hover:text-primary transition-colors" href="#"
-                                style="">Regulamin platformy</a></li>
-                        <li class="" style=""><a class="text-slate-400 hover:text-primary transition-colors" href="#"
-                                style="">Polityka Prywatności</a></li>
+                        <li class="" style=""><a class="text-slate-400 hover:text-primary transition-colors"
+                                href="https://docs.google.com/document/d/e/2PACX-1vTd-iz1TA1z7QeA9-Po0wKXezvWUYxlErzCSM6CGmgWtF14lb4M0-4qRzTfdkidwkL5JSxyNz2zcSmh/pub"
+                                target="_blank" style="">Regulamin platformy</a></li>
+                        <li class="" style=""><a class="text-slate-400 hover:text-primary transition-colors"
+                                href="https://docs.google.com/document/d/e/2PACX-1vQ5oqdzWN-bPw6eBerd7nLk5uXz8CNAtGFDayN9Rm0sHqTtySXH8aun0XsCE6Lxp4h75BlmNJWjtwsH/pub"
+                                target="_blank" style="">Polityka Prywatności</a></li>
                     </ul>
                 </div>
                 <div class="space-y-4">
-                    <div class="text-slate-100 font-bold uppercase tracking-widest text-[10px]" style="">Social (maby in
-                        future)</div>
+                    <div class="text-slate-100 font-bold uppercase tracking-widest text-[10px]" style="">Social (maybe
+                        in
+                        the future)</div>
                     <ul class="space-y-2">
                         <li class="" style=""><a class="text-slate-400 hover:text-primary transition-colors" href="#"
                                 style="">Instagram</a></li>
@@ -781,6 +800,51 @@
                     expandBtn.style.display = 'none';
                     expandedLibrary.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 });
+            }
+
+            // Timer logic
+            const timerElement = document.getElementById('timer');
+            if (timerElement) {
+                // 9 maja 2026, 14:40
+                const targetDate = new Date(2026, 4, 9, 14, 40, 0).getTime();
+                
+                function updateTimer() {
+                    const now = new Date().getTime();
+                    const distance = targetDate - now;
+
+                    if (distance <= 0) {
+                        timerElement.innerHTML = "00 dni 00h 00m 00s";
+                        timerElement.style.color = "#FF0000";
+                        timerElement.classList.add("timer-blink");
+                        clearInterval(timerInterval);
+                        return;
+                    }
+
+                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    const fDays = String(days).padStart(2, '0');
+                    const fHours = String(hours).padStart(2, '0');
+                    const fMinutes = String(minutes).padStart(2, '0');
+                    const fSeconds = String(seconds).padStart(2, '0');
+
+                    timerElement.innerHTML = `${fDays} dni ${fHours}h ${fMinutes}m ${fSeconds}s`;
+
+                    if (days >= 13) {
+                        timerElement.style.color = "#ff6b6b"; // jasnoczerwony
+                    } else if (days >= 9) {
+                        timerElement.style.color = "#cc0000"; // mocny czerwony
+                    } else if (days < 1) {
+                        timerElement.style.color = "#FF0000"; // jaskrawoczerwony
+                    } else {
+                        timerElement.style.color = "#e53935"; // czerwony dla pozostalych
+                    }
+                }
+
+                updateTimer();
+                const timerInterval = setInterval(updateTimer, 1000);
             }
         });
     </script>
