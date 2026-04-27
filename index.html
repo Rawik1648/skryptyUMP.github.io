@@ -11,6 +11,8 @@
     <meta property="og:description"
         content="Zaliczaj egzaminy bez stresu z przejrzystymi skryptami tworzonymi przez studentów dla studentów.">
     <meta property="og:image" content="link-do-Twojego-logo-lub-screena-strony.png">
+    <link rel="icon" href="https://i.postimg.cc/T328JYNM/fd3f8536-c21a-4ff4-9d79-dcb23db9124c.jpg" />
+    <link rel="shortcut icon" href="https://i.postimg.cc/T328JYNM/fd3f8536-c21a-4ff4-9d79-dcb23db9124c.jpg" />
     <link rel="canonical" href="https://medskrypty.pl/" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
@@ -151,6 +153,16 @@
             min-width: 165px;
             text-align: left;
         }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px 5px rgba(100, 255, 218, 0.7); }
+            50% { box-shadow: 0 0 35px 8px rgba(100, 255, 218, 0.9); }
+        }
+
+        .glow-active {
+            animation: pulse-glow 2s infinite !important;
+            transition: all 0.5s ease-in-out !important;
+        }
     </style>
 </head>
 
@@ -164,8 +176,10 @@
         <nav
             class="flex justify-between items-center w-full px-8 py-4 max-w-7xl mx-auto bg-[#fbf9f1]/80 dark:bg-stone-900/80 backdrop-blur-xl rounded-full mt-4">
             <div class="flex items-center gap-3">
-                <div class="flex items-center justify-center w-10 h-10 bg-primary text-white rounded-full">
-                    <span class="material-symbols-outlined text-2xl" data-icon="neurology" style="">neurology</span>
+                <div class="flex items-center justify-center w-10 h-10 text-white rounded-full overflow-hidden">
+                    <img src="https://i.postimg.cc/T328JYNM/fd3f8536-c21a-4ff4-9d79-dcb23db9124c.jpg"
+                        class="w-full h-full object-cover" alt="medskrypty.pl logo"
+                        style="border-radius: 50%; object-fit: cover;">
                 </div>
                 <span class="text-2xl font-black text-[#9e412e] dark:text-[#ff8c73] tracking-tighter"
                     style="">medskrypty.pl</span>
@@ -723,8 +737,10 @@
         <div class="flex flex-col md:flex-row justify-between items-start px-12 py-20 w-full max-w-7xl mx-auto gap-12">
             <div class="space-y-6 max-w-sm">
                 <div class="flex items-center gap-3">
-                    <div class="flex items-center justify-center w-8 h-8 bg-primary text-white rounded-full">
-                        <span class="material-symbols-outlined text-xl" style="">neurology</span>
+                    <div class="flex items-center justify-center w-8 h-8 text-white rounded-full overflow-hidden">
+                        <img src="https://i.postimg.cc/T328JYNM/fd3f8536-c21a-4ff4-9d79-dcb23db9124c.jpg"
+                            class="w-full h-full object-cover" alt="medskrypty.pl logo"
+                            style="border-radius: 50%; object-fit: cover;">
                     </div>
                     <div class="text-xl font-black tracking-tighter" style="">medskrypty.pl</div>
                 </div>
@@ -753,14 +769,14 @@
                     </ul>
                 </div>
                 <div class="space-y-4">
-                    <div class="text-slate-100 font-bold uppercase tracking-widest text-[10px]" style="">Social (maybe
-                        in
-                        the future)</div>
+                    <div class="text-slate-100 font-bold uppercase tracking-widest text-[10px]" style="">SOCIAL MEDIA
+                    </div>
                     <ul class="space-y-2">
-                        <li class="" style=""><a class="text-slate-400 hover:text-primary transition-colors" href="#"
-                                style="">Instagram</a></li>
-                        <li class="" style=""><a class="text-slate-400 hover:text-primary transition-colors" href="#"
-                                style="">TikTok</a></li>
+                        <li class="" style=""><a class="text-slate-400 hover:text-primary transition-colors"
+                                href="https://www.instagram.com/medskrypty.pl/" target="_blank" style="">Instagram</a>
+                        </li>
+                        <li class="" style=""><a class="text-slate-400 hover:text-primary transition-colors"
+                                href="https://www.tiktok.com/@medskrypty.pl" target="_blank" style="">TikTok</a></li>
                     </ul>
                 </div>
             </div>
@@ -780,7 +796,7 @@
     </footer>
     <!-- Floating Progress Orb -->
     <div class="fixed bottom-8 right-8 z-50">
-        <div
+        <div id="floating-orb"
             class="w-16 h-16 rounded-full glass-nav bg-white/40 ambient-shadow flex items-center justify-center text-primary group cursor-pointer hover:scale-110 transition-transform">
             <svg class="absolute inset-0 w-full h-full -rotate-90">
                 <circle class="text-secondary-fixed-dim" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor"
@@ -788,8 +804,9 @@
                 <circle class="text-primary" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor"
                     stroke-dasharray="176" stroke-dashoffset="120" stroke-width="4"></circle>
             </svg>
-            <span class="material-symbols-outlined text-2xl relative z-10" data-icon="menu_book"
-                style="">menu_book</span>
+            <img src="https://i.postimg.cc/T328JYNM/fd3f8536-c21a-4ff4-9d79-dcb23db9124c.jpg"
+                class="w-10 h-10 object-cover relative z-10" alt="medskrypty.pl logo"
+                style="border-radius: 50%; object-fit: cover;">
         </div>
     </div>
 
@@ -862,6 +879,30 @@
 
                 updateTimer();
                 const timerInterval = setInterval(updateTimer, 1000);
+            }
+
+            // Floating Orb Easter Egg Logic
+            const floatingOrb = document.getElementById('floating-orb');
+            if (floatingOrb) {
+                let orbState = 0; // 0: initial, 1: waiting, 2: ready
+                floatingOrb.addEventListener('click', () => {
+                    if (orbState === 0) {
+                        orbState = 1;
+                        floatingOrb.classList.add('glow-active');
+                        
+                        const img = floatingOrb.querySelector('img');
+                        if (img) {
+                            img.style.transition = 'transform 0.8s ease-in-out';
+                            img.style.transform = 'rotate(360deg)';
+                        }
+                        
+                        setTimeout(() => {
+                            orbState = 2;
+                        }, 3000);
+                    } else if (orbState === 2) {
+                        window.location.href = 'https://cart.easy.tools/checkout/medskrypty/ginekologia-i-poloznictwo-pierwsze-3-rozdzialy';
+                    }
+                });
             }
         });
     </script>
