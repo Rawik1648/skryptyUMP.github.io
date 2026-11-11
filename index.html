@@ -440,7 +440,7 @@
                             <div>
                                 <p class="text-xl font-extrabold tracking-tight text-on-surface font-headline">VI rok</p>
                                 <p class="text-sm text-on-surface-variant mt-0.5">Kierunek lekarski
-                                    <span class="ml-2 inline-block px-2 py-0.5 rounded-full bg-surface-container-high text-xs font-bold">wkrótce</span>
+                                    <span class="ml-2 inline-block px-2 py-0.5 rounded-full bg-surface-container-high text-xs font-bold">2 skrypty</span>
                                 </p>
                             </div>
                         </div>
@@ -667,23 +667,77 @@
                      i usuń komunikat "wkrótce".
                 ──────────────────────────────────────────────────────── -->
                 <div id="year6-content" class="year-collapsible">
-                    <div class="pt-6 pb-4">
-                        <!-- PLACEHOLDER – zastąp poniższy div siatką kart gdy pojawią się skrypty VI roku -->
-                        <div class="rounded-2xl border-2 border-dashed border-outline-variant/40 bg-surface-container-low py-16 flex flex-col items-center gap-4 text-center px-8">
-                            <div class="w-14 h-14 rounded-full bg-secondary-container/50 flex items-center justify-center">
-                                <span class="material-symbols-outlined text-secondary text-3xl">schedule</span>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pt-6 pb-4">
+
+                        <!-- Medycyna Ratunkowa -->
+                        <div class="group cursor-pointer bg-surface-container-low rounded-2xl p-6 hover:ambient-shadow transition-all duration-500 border border-transparent hover:border-primary/30 hover:-translate-y-1.5 flex flex-col">
+                            <div class="aspect-[3/4] rounded-xl overflow-hidden mb-6 bg-surface-dim relative">
+                                <img alt="Script Cover" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                    src="./ratunkowa.jpeg">
                             </div>
-                            <p class="text-xl font-bold font-headline text-on-surface">Już wkrótce…</p>
-                            <p class="text-on-surface-variant max-w-sm text-sm leading-relaxed">
-                                Skrypty dla VI roku pojawią się wkrótce. Zajrzyj tu ponownie lub zapisz się do newslettera, by otrzymać powiadomienie.
-                            </p>
+                            <h3 class="text-2xl font-bold mb-3">Medycyna Ratunkowa</h3>
+                            <p class="text-on-surface-variant mb-6 line-clamp-2 text-sm">Stany nagłe, algorytmy postępowania i szybkie decyzje dyżurowe w pigułce</p>
+                            <div class="mt-auto flex justify-between items-center">
+                                <span class="text-primary font-bold text-xl">od 29 zł</span>
+                                <button class="bg-primary text-on-primary px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2">Sprawdź <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+                            </div>
+                            <div class="card-pricing space-y-4">
+                                <div class="space-y-3">
+                                    <a href="https://cart.easy.tools/checkout/medskrypty/medycyna-ratunkowa"
+                                        class="p-4 rounded-xl bg-surface-bright flex justify-between items-center hover:bg-secondary-container transition-colors cursor-pointer">
+                                        <div class="flex flex-col"><span class="font-bold">Tylko Skrypt PDF</span><span class="text-xs text-on-surface-variant">Samo „mięso" w formacie PDF</span></div>
+                                        <span class="font-bold text-lg">85 zł</span>
+                                    </a>
+                                    <a href="https://cart.easy.tools/checkout/medskrypty/medycyna-ratunkowa"
+                                        class="p-4 rounded-xl bg-surface-bright flex justify-between items-center hover:bg-secondary-container transition-colors cursor-pointer">
+                                        <div class="flex flex-col"><span class="font-bold">Tylko Fiszki Anki</span><span class="text-xs text-on-surface-variant">Pytania i odpowiedzi do Anki</span></div>
+                                        <span class="font-bold text-lg">29 zł</span>
+                                    </a>
+                                    <a href="https://cart.easy.tools/checkout/medskrypty/medycyna-ratunkowa"
+                                        class="p-4 rounded-xl bg-surface-bright flex justify-between items-center border-2 border-primary bg-primary-container/10 relative overflow-hidden cursor-pointer">
+                                        <div class="absolute top-0 right-0 bg-primary text-on-primary text-[10px] px-3 py-1 font-bold rounded-bl-xl uppercase tracking-widest">Najlepszy wybór</div>
+                                        <div class="flex flex-col"><span class="font-bold text-primary">Pakiet: Skrypt + Fiszki</span><span class="text-xs text-on-primary-container/70">Wszystko, czego potrzebujesz</span></div>
+                                        <span class="line-through text-xs text-on-surface-variant/70 mr-1.5 font-normal">114 zł</span><span class="font-bold text-lg text-primary">105 zł</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <!-- TUTAJ wklejaj karty skryptów VI roku w przyszłości:
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                            (karty skryptów)
+
+                        <!-- Medycyna Rodzinna -->
+                        <div class="group cursor-pointer bg-surface-container-low rounded-2xl p-6 hover:ambient-shadow transition-all duration-500 border border-transparent hover:border-primary/30 hover:-translate-y-1.5 flex flex-col">
+                            <div class="aspect-[3/4] rounded-xl overflow-hidden mb-6 bg-surface-dim relative">
+                                <img alt="Script Cover" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                    src="./rodzinna.jpeg">
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">Medycyna Rodzinna</h3>
+                            <p class="text-on-surface-variant mb-6 line-clamp-2 text-sm">Kompendium gabinetowe POZ – najczęstsze jednostki, diagnostyka i leczenie</p>
+                            <div class="mt-auto flex justify-between items-center">
+                                <span class="text-primary font-bold text-xl">od 29 zł</span>
+                                <button class="bg-primary text-on-primary px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2">Sprawdź <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+                            </div>
+                            <div class="card-pricing space-y-4">
+                                <div class="space-y-3">
+                                    <a href="https://cart.easy.tools/checkout/medskrypty/medycyna-rodzinna"
+                                        class="p-4 rounded-xl bg-surface-bright flex justify-between items-center hover:bg-secondary-container transition-colors cursor-pointer">
+                                        <div class="flex flex-col"><span class="font-bold">Tylko Skrypt PDF</span><span class="text-xs text-on-surface-variant">Samo „mięso" w formacie PDF</span></div>
+                                        <span class="font-bold text-lg">85 zł</span>
+                                    </a>
+                                    <a href="https://cart.easy.tools/checkout/medskrypty/medycyna-rodzinna"
+                                        class="p-4 rounded-xl bg-surface-bright flex justify-between items-center hover:bg-secondary-container transition-colors cursor-pointer">
+                                        <div class="flex flex-col"><span class="font-bold">Tylko Fiszki Anki</span><span class="text-xs text-on-surface-variant">Pytania i odpowiedzi do Anki</span></div>
+                                        <span class="font-bold text-lg">29 zł</span>
+                                    </a>
+                                    <a href="https://cart.easy.tools/checkout/medskrypty/medycyna-rodzinna"
+                                        class="p-4 rounded-xl bg-surface-bright flex justify-between items-center border-2 border-primary bg-primary-container/10 relative overflow-hidden cursor-pointer">
+                                        <div class="absolute top-0 right-0 bg-primary text-on-primary text-[10px] px-3 py-1 font-bold rounded-bl-xl uppercase tracking-widest">Najlepszy wybór</div>
+                                        <div class="flex flex-col"><span class="font-bold text-primary">Pakiet: Skrypt + Fiszki</span><span class="text-xs text-on-primary-container/70">Wszystko, czego potrzebujesz</span></div>
+                                        <span class="line-through text-xs text-on-surface-variant/70 mr-1.5 font-normal">114 zł</span><span class="font-bold text-lg text-primary">105 zł</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        -->
-                    </div>
+
+                    </div><!-- /grid VI rok -->
                 </div><!-- /year6-content -->
 
                 <!-- ────────────────────────────────────────────────────────
@@ -912,6 +966,74 @@
                                         <div class="absolute top-0 right-0 bg-primary text-on-primary text-[10px] px-3 py-1 font-bold rounded-bl-xl uppercase tracking-widest">Najlepszy wybór</div>
                                         <div class="flex flex-col"><span class="font-bold text-primary">Pakiet: Skrypt + Fiszki</span><span class="text-xs text-on-primary-container/70">Wszystko, czego potrzebujesz</span></div>
                                         <span class="font-bold text-lg text-primary">59 zł</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Medycyna Ratunkowa -->
+                        <div class="group cursor-pointer bg-surface-container-low rounded-2xl p-6 hover:ambient-shadow transition-all duration-500 border border-transparent hover:border-primary/30 hover:-translate-y-1.5 flex flex-col">
+                            <div class="aspect-[3/4] rounded-xl overflow-hidden mb-6 bg-surface-dim relative">
+                                <img alt="Script Cover" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                    src="./ratunkowa.jpeg">
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">Medycyna Ratunkowa</h3>
+                            <p class="text-on-surface-variant mb-6 line-clamp-2 text-sm">Stany nagłe, algorytmy postępowania i szybkie decyzje dyżurowe w pigułce</p>
+                            <div class="mt-auto flex justify-between items-center">
+                                <span class="text-primary font-bold text-xl">od 29 zł</span>
+                                <button class="bg-primary text-on-primary px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2">Sprawdź <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+                            </div>
+                            <div class="card-pricing space-y-4">
+                                <div class="space-y-3">
+                                    <a href="https://cart.easy.tools/checkout/medskrypty/medycyna-ratunkowa"
+                                        class="p-4 rounded-xl bg-surface-bright flex justify-between items-center hover:bg-secondary-container transition-colors cursor-pointer">
+                                        <div class="flex flex-col"><span class="font-bold">Tylko Skrypt PDF</span><span class="text-xs text-on-surface-variant">Samo „mięso" w formacie PDF</span></div>
+                                        <span class="font-bold text-lg">85 zł</span>
+                                    </a>
+                                    <a href="https://cart.easy.tools/checkout/medskrypty/medycyna-ratunkowa"
+                                        class="p-4 rounded-xl bg-surface-bright flex justify-between items-center hover:bg-secondary-container transition-colors cursor-pointer">
+                                        <div class="flex flex-col"><span class="font-bold">Tylko Fiszki Anki</span><span class="text-xs text-on-surface-variant">Pytania i odpowiedzi do Anki</span></div>
+                                        <span class="font-bold text-lg">29 zł</span>
+                                    </a>
+                                    <a href="https://cart.easy.tools/checkout/medskrypty/medycyna-ratunkowa"
+                                        class="p-4 rounded-xl bg-surface-bright flex justify-between items-center border-2 border-primary bg-primary-container/10 relative overflow-hidden cursor-pointer">
+                                        <div class="absolute top-0 right-0 bg-primary text-on-primary text-[10px] px-3 py-1 font-bold rounded-bl-xl uppercase tracking-widest">Najlepszy wybór</div>
+                                        <div class="flex flex-col"><span class="font-bold text-primary">Pakiet: Skrypt + Fiszki</span><span class="text-xs text-on-primary-container/70">Wszystko, czego potrzebujesz</span></div>
+                                        <span class="line-through text-xs text-on-surface-variant/70 mr-1.5 font-normal">114 zł</span><span class="font-bold text-lg text-primary">105 zł</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Medycyna Rodzinna -->
+                        <div class="group cursor-pointer bg-surface-container-low rounded-2xl p-6 hover:ambient-shadow transition-all duration-500 border border-transparent hover:border-primary/30 hover:-translate-y-1.5 flex flex-col">
+                            <div class="aspect-[3/4] rounded-xl overflow-hidden mb-6 bg-surface-dim relative">
+                                <img alt="Script Cover" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                    src="./rodzinna.jpeg">
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">Medycyna Rodzinna</h3>
+                            <p class="text-on-surface-variant mb-6 line-clamp-2 text-sm">Kompendium gabinetowe POZ – najczęstsze jednostki, diagnostyka i leczenie</p>
+                            <div class="mt-auto flex justify-between items-center">
+                                <span class="text-primary font-bold text-xl">od 29 zł</span>
+                                <button class="bg-primary text-on-primary px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2">Sprawdź <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+                            </div>
+                            <div class="card-pricing space-y-4">
+                                <div class="space-y-3">
+                                    <a href="https://cart.easy.tools/checkout/medskrypty/medycyna-rodzinna"
+                                        class="p-4 rounded-xl bg-surface-bright flex justify-between items-center hover:bg-secondary-container transition-colors cursor-pointer">
+                                        <div class="flex flex-col"><span class="font-bold">Tylko Skrypt PDF</span><span class="text-xs text-on-surface-variant">Samo „mięso" w formacie PDF</span></div>
+                                        <span class="font-bold text-lg">85 zł</span>
+                                    </a>
+                                    <a href="https://cart.easy.tools/checkout/medskrypty/medycyna-rodzinna"
+                                        class="p-4 rounded-xl bg-surface-bright flex justify-between items-center hover:bg-secondary-container transition-colors cursor-pointer">
+                                        <div class="flex flex-col"><span class="font-bold">Tylko Fiszki Anki</span><span class="text-xs text-on-surface-variant">Pytania i odpowiedzi do Anki</span></div>
+                                        <span class="font-bold text-lg">29 zł</span>
+                                    </a>
+                                    <a href="https://cart.easy.tools/checkout/medskrypty/medycyna-rodzinna"
+                                        class="p-4 rounded-xl bg-surface-bright flex justify-between items-center border-2 border-primary bg-primary-container/10 relative overflow-hidden cursor-pointer">
+                                        <div class="absolute top-0 right-0 bg-primary text-on-primary text-[10px] px-3 py-1 font-bold rounded-bl-xl uppercase tracking-widest">Najlepszy wybór</div>
+                                        <div class="flex flex-col"><span class="font-bold text-primary">Pakiet: Skrypt + Fiszki</span><span class="text-xs text-on-primary-container/70">Wszystko, czego potrzebujesz</span></div>
+                                        <span class="line-through text-xs text-on-surface-variant/70 mr-1.5 font-normal">114 zł</span><span class="font-bold text-lg text-primary">105 zł</span>
                                     </a>
                                 </div>
                             </div>
